@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".user.login.view.LoginActivity"
     android:orientation="vertical"
     android:weightSum="100"
     android:background="@color/colorAccent">
@@ -63,39 +63,47 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="40"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="4">
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_width="match_parent"
+            android:gravity="right"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:text="@string/activity_login_email"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Escribe tu email..." />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:text="Password:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="right"
+            />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Escribe tu password..." />
     </LinearLayout>
 
     <Button
