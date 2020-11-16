@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Handler;
 
 import com.svalero.splashscreen_26_oct_o.RegisterRelativeLayout;
+import com.svalero.splashscreen_26_oct_o.beans.User;
+import com.svalero.splashscreen_26_oct_o.user.login.contract.LoginContract;
+import com.svalero.splashscreen_26_oct_o.user.login.model.LoginModel;
 import com.svalero.splashscreen_26_oct_o.user.login.view.LoginActivity;
 
 public class LoginPresenter {
@@ -11,40 +14,39 @@ public class LoginPresenter {
     // LoginPresenter=>
     // Negociador =>
     private LoginActivity loginActivity;
-
+    private LoginModel loginModel;
     public LoginPresenter(LoginActivity loginActivity) {
         this.loginActivity = loginActivity;
+        this.loginModel = new LoginModel();
     }
-
+    private boolean isValidacionCorrecta = true;
     public void login(String email,
                       String password){
         // 1º=> Validar datos de entrada
             // Clase Validaciones, (estática)
-        // 2º=> Consultar el API para Login
-        // Lanzar un proceso en 2º plano que se active a los 4sg
-        // package--> Manejar hilos
-        final boolean resp = true;
-        final Handler handler = new Handler();
-        handler.postDelayed(
-                new Runnable() { // Interface
-                    @Override
-                    public void run() {
-                        // Cargar la 2ª pantalla
-                        if(resp){
-                            /*Seguir aquí con MVP*/
-                            Intent navegar = new Intent(
-                                    loginActivity.getBaseContext(),
-                                    RegisterRelativeLayout.class);
-                            loginActivity.startActivity(navegar);
-                        }
-                    }
+
+        if(isValidacionCorrecta){
+            // 2º=> Consultar el API para Login
+                User user = new User();
+                user.setEmail(email);
+                user.setPassword(password);
+            loginModel.loginUserWS(user,
+                    new LoginContract.Model.OnLoginUserListener() {
+                @Override
+                public void onFinished(User user) {
+                    loginActivity.success(user);
                 }
-                , 4000
-        );
+
+                @Override
+                public void onFailure(String error) {
+                    loginActivity.error(error);
+                }
+            });
+        }
+
         // 3º=> Responder user (correcto) o user (incorrecto)
         // 4º=> Cambiar de pantalla
         // Cargar la 2ª pantalla
-
 
     }
 }
