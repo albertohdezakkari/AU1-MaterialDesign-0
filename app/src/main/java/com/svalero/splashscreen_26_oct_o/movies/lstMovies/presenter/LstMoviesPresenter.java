@@ -7,28 +7,36 @@ import com.svalero.splashscreen_26_oct_o.movies.lstMovies.view.LstMoviesActivity
 
 import java.util.ArrayList;
 
-public class LstMoviesPresenter {
+public class LstMoviesPresenter
+        implements LstMoviesContract.Presenter
+{
     private LstMoviesModel lstMoviesModel;
-    private LstMoviesActivity lstMoviesActivity;
-    public LstMoviesPresenter(LstMoviesActivity lstMoviesActivity) {
-        this.lstMoviesActivity = lstMoviesActivity;
+    private LstMoviesContract.View vista;
+
+    public LstMoviesPresenter(LstMoviesContract.View vista) {
+        this.vista = vista;
         this.lstMoviesModel = new LstMoviesModel();
     }
 
-    public void getMovies(){
-        /*Componente Reactivo*/
-        lstMoviesModel.getMoviesWS(new LstMoviesContract.Model.
-                OnLstMoviesListener() {
-            @Override
-            public void onFinished(ArrayList<Movie> movies) {
-                lstMoviesActivity.success(movies);
-            }
 
-            @Override
-            public void onFailure(String error) {
-                lstMoviesActivity.error("Error en la lista Movies. ");
-            }
-        });
+    @Override
+    public void getMovies() {
+            lstMoviesModel.getMoviesWS(new
+                     LstMoviesContract.Model.OnLstMoviesListener() {
+                @Override
+                public void onFinished(ArrayList<Movie> movies) {
+                    vista.success();
+                }
 
+                @Override
+                public void onFailure(String error) {
+                    vista.error();
+                }
+            });
+            /*if("si ha ido bien"){
+                vista.success();
+            }else{
+                vista.error();
+            }*/
     }
 }

@@ -10,11 +10,15 @@ import com.svalero.splashscreen_26_oct_o.R;
 import com.svalero.splashscreen_26_oct_o.RegisterRelativeLayout;
 import com.svalero.splashscreen_26_oct_o.beans.Movie;
 import com.svalero.splashscreen_26_oct_o.beans.User;
+import com.svalero.splashscreen_26_oct_o.movies.lstMovies.contract.LstMoviesContract;
 import com.svalero.splashscreen_26_oct_o.movies.lstMovies.presenter.LstMoviesPresenter;
 
 import java.util.ArrayList;
 
-public class LstMoviesActivity extends AppCompatActivity {
+public class LstMoviesActivity
+        extends AppCompatActivity
+        implements LstMoviesContract.View
+        {
     private LstMoviesPresenter lstMoviesPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +28,14 @@ public class LstMoviesActivity extends AppCompatActivity {
         lstMoviesPresenter = new LstMoviesPresenter(this);
         lstMoviesPresenter.getMovies();
     }
-    public void success(ArrayList<Movie> lstMovies){
-        Toast.makeText(this, "Lista Movies. ",
-                Toast.LENGTH_SHORT).show();
-        /*Intent navegar = new Intent(getBaseContext(), RegisterRelativeLayout.class);
-        startActivity(navegar);*/
-    }
 
-    public void error(String err){
-        Toast.makeText(this, err, Toast.LENGTH_SHORT).show();
-    }
-}
+            @Override
+            public void success() {
+
+            }
+
+            @Override
+            public void error() {
+
+            }
+        }
