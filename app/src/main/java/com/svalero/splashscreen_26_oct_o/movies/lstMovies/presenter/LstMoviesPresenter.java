@@ -21,22 +21,16 @@ public class LstMoviesPresenter
 
     @Override
     public void getMovies() {
-            lstMoviesModel.getMoviesWS(new
-                     LstMoviesContract.Model.OnLstMoviesListener() {
+            lstMoviesModel.getMoviesWS(new LstMoviesContract.Model.OnLstMoviesListener() {
                 @Override
-                public void onFinished(ArrayList<Movie> movies) {
-                    vista.success();
+                public void resolve(ArrayList<Movie> movies) {
+                    vista.success(movies);
                 }
-
                 @Override
-                public void onFailure(String error) {
-                    vista.error();
+                public void reject(String error) {
+                    vista.error("Problemas al traer los datos.");
                 }
             });
-            /*if("si ha ido bien"){
-                vista.success();
-            }else{
-                vista.error();
-            }*/
+
     }
 }

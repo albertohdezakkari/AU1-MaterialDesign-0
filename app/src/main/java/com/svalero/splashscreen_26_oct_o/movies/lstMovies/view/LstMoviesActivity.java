@@ -30,12 +30,14 @@ public class LstMoviesActivity
     }
 
             @Override
-            public void success() {
-
+            public void success(ArrayList<Movie> movies) {
+                // Crear un nuevo adaptador
+               // adapter = new AdapterMovie(movies);
+                //recycler.setAdapter(adapter);
             }
 
             @Override
-            public void error() {
-
+            public void error(String message) {
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
             }
         }
