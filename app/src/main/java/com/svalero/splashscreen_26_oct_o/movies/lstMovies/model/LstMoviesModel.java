@@ -24,33 +24,40 @@ public class LstMoviesModel
 
             @Override
             public void getMoviesWS(final OnLstMoviesListener onLstMoviesListener) {
-                    this.onLstMoviesListener = onLstMoviesListener;
+                // Callback
+                this.onLstMoviesListener = onLstMoviesListener;
+                TareaInvisibleQueTraeLosDatosDelAPI tbck =
+                        new TareaInvisibleQueTraeLosDatosDelAPI();
+                tbck.execute();
             }
 
             /*MONTO LA CÁPSULA QUE ME PERMITE VIAJAR AL API*/
 
             class TareaInvisibleQueTraeLosDatosDelAPI
                     extends AsyncTask<String, Integer, Boolean>{
-
+                //private Has
+                // Constructor
+                    // Le paso parámetros o el HashMap
                 @Override
                 protected Boolean doInBackground(String... strings) {
                     Post post = new Post();
 
                     HashMap<String, String> datos = new HashMap();
                     // CLAVE-VALOR
-                    datos.put("api_key", "d9c4177bb1cc819d43088d25fbe2474c");
-                    datos.put("language", "es-ES");
-                    datos.put("page", "1");
+                        datos.put("api_key", "d9c4177bb1cc819d43088d25fbe2474c");
+                        datos.put("language", "es-ES");
+                        datos.put("page", "1");
                     try {
-                        JSONObject objectMovies = post.getServerDataGetObject(URL);
+                        JSONObject objectMovies = post.
+                                getServerDataGetObject(URL);
                         JSONArray lstMovies = objectMovies.getJSONArray("results");
-                        lstArrayMovies = Movie.getArrayListFromJSON(lstMovies);
+                        lstArrayMovies = Movie.
+                                getArrayListFromJSON(lstMovies);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     return true;
                 }
-
                 @Override
                 protected void onPostExecute(Boolean resp) {
                     if(resp){
