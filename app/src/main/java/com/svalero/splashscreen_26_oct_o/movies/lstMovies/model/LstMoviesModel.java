@@ -18,7 +18,7 @@ public class LstMoviesModel
         implements LstMoviesContract.Model
         {
             private static final
-                        String URL ="https://api.themoviedb.org/3/movie/popular";
+                        String URL ="https://api.themoviedb.org/3/movie/popular?api_key=d9c4177bb1cc819d43088d25fbe2474c&language=en-US&page=1";
             private ArrayList<Movie> lstArrayMovies;
             OnLstMoviesListener onLstMoviesListener;
 

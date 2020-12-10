@@ -35,19 +35,21 @@ public class LstMoviesActivity
         lstMoviesPresenter = new LstMoviesPresenter(this);
         lstMoviesPresenter.getMovies();
 
-        // Obtener el Recycler
-        recycler = (RecyclerView) findViewById(R.id.recyclerMovies);
-        recycler.setHasFixedSize(true);
 
-        // Usar un administrador para LinearLayout
-            // 1º) Tipo Lista
-            // 2º) Tipo Grid
-            lManager = new LinearLayoutManager(this);
-            recycler.setLayoutManager(lManager);
     }
 
             @Override
             public void success(ArrayList<Movie> movies) {
+                // Obtener el Recycler
+                recycler = (RecyclerView) findViewById(R.id.recyclerMovies);
+                recycler.setHasFixedSize(true);
+
+                // Usar un administrador para LinearLayout
+                // 1º) Tipo Lista
+                // 2º) Tipo Grid
+                lManager = new LinearLayoutManager(this);
+
+                recycler.setLayoutManager(lManager);
                 // Crear un nuevo adaptador
                 MovieAdapter adapter = new MovieAdapter(movies);
 

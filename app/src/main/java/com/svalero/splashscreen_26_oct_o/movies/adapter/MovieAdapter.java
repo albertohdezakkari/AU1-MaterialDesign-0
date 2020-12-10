@@ -67,7 +67,7 @@ public class MovieAdapter
 
     @Override
     public int getItemCount() {
-        return 0;
+        return lstMovies.size();
     }
 
 
