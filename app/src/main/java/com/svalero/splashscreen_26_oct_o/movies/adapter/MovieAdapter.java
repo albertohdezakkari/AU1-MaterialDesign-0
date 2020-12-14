@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.svalero.splashscreen_26_oct_o.R;
 import com.svalero.splashscreen_26_oct_o.beans.Movie;
 
@@ -63,6 +64,10 @@ public class MovieAdapter
 
         // Picasso.with(context).load(movie.getImage()).
         //  into(holder.img);
+        // AÑADIR LIBRERÍA implementation 'com.squareup.picasso:picasso:2.71828'
+        // https://image.tmdb.org/t/p/original/eLT8Cu357VOwBVTitkmlDEg32Fs.jpg
+        String urlBase = "https://image.tmdb.org/t/p/original";
+        Picasso.get().load(urlBase + movie.getImage()).into(holder.img);
     }
 
     @Override
