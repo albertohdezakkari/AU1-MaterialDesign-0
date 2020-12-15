@@ -98,6 +98,7 @@ public class Post {
                 }
 
             }
+
             private JSONArray getRespuestaPostEnJson() {
                 JSONArray jArray = null;
                 try {
@@ -131,7 +132,8 @@ public class Post {
                 }
             }
 
-    public JSONObject getRespuestaObject() {
+
+            private JSONObject getRespuestaObject() {
         JSONObject jsonObject = null;
         try {
             if(is!=null){
@@ -164,8 +166,15 @@ public class Post {
             return jsonObject;
         }
     }
+
+
+
     public JSONObject getServerDataGetObject(String URL) {
         conectaGet(URL);
+        return      getRespuestaObject();
+    }
+    public JSONObject getServerDataPostObject(Map<String,String> dataToSend, String URL) {
+        conectaPost(dataToSend,URL);
         return      getRespuestaObject();
     }
 

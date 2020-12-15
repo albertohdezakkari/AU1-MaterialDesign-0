@@ -67,7 +67,9 @@ public class MovieAdapter
         // AÑADIR LIBRERÍA implementation 'com.squareup.picasso:picasso:2.71828'
         // https://image.tmdb.org/t/p/original/eLT8Cu357VOwBVTitkmlDEg32Fs.jpg
         String urlBase = "https://image.tmdb.org/t/p/original";
-        Picasso.get().load(urlBase + movie.getImage()).into(holder.img);
+        //Picasso.get().load(urlBase + movie.getImage()).into(holder.img);
+        Picasso.get().load("http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg").into(holder.img);
+
     }
 
     @Override
